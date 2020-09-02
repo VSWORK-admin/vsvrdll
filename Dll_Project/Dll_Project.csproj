@@ -4,9 +4,22 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>D:\UnityProject\ILRuntimeU3D_Clone2020.7.31\ILRuntimeDemo\Assets\StreamingAssets\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UnityDlls\**" />
+    <EmbeddedResource Remove="UnityDlls\**" />
+    <None Remove="UnityDlls\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\UnityProject\VR_Test2\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ootii">
+      <HintPath>UnityDlls\ootii.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>UnityDlls\UnityEngine.CoreModule.dll</HintPath>
