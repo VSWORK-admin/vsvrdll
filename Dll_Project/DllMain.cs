@@ -15,7 +15,7 @@ namespace Dll_Project
                 extralData.ExtralDatas[0].Target.gameObject.SetActive(true);
             }
 
-            com.ootii.Messages.MessageDispatcher.SendMessage(DllManager.Instance, "STARTED", "Whoo Hoo!", 0);
+            //com.ootii.Messages.MessageDispatcher.SendMessage(DllManager.Instance, "STARTED", "Whoo Hoo!", 0);
         }
     }
 }

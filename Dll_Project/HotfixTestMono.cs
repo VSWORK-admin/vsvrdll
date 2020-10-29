@@ -24,17 +24,17 @@ namespace Dll_Project
         {
             base.Awake();
 
-            if(BaseMono.ExtralDatas.Length > 0)
-            {
-                BaseMono.ExtralDatas[0].Target.gameObject.SetActive(false);
-            }
-
             Debug.Log(testNewClass.showInfo1);
         }
 
         public override void Start()
         {
             base.Start();
+
+            if (BaseMono.ExtralDatas.Length > 0)
+            {
+                BaseMono.ExtralDatas[0].Target.gameObject.SetActive(false);
+            }
 
             Debug.Log("HoffixTestMono Start !");
         }

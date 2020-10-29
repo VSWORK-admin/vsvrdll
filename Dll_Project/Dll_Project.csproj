@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>D:\UnityProject\ILRuntimeU3D_Clone2020.7.31\ILRuntimeDemo\Assets\StreamingAssets\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="TestCLRBinding.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\UnityProject\VR_Test2\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\ILRuntimeDemo\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="ootii">
       <HintPath>UnityDlls\ootii.dll</HintPath>
@@ -31,5 +37,9 @@
       <HintPath>UnityDlls\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(ProjectDir)otherDir\$(ProjectName)dll.bytes&quot;&#xD;&#xA;copy &quot;$(TargetDir)$(ProjectName).pdb&quot; &quot;$(ProjectDir)otherDir\$(ProjectName)pdb.bytes&quot;" />
+  </Target>
 
 </Project>
