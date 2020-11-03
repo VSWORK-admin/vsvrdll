@@ -24,6 +24,18 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>UnityDlls\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="ConditionalExpression">
+      <HintPath>UnityDlls\ConditionalExpression.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>UnityDlls\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>UnityDlls\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>UnityDlls\DOTweenPro.dll</HintPath>
+    </Reference>
     <Reference Include="LitJson">
       <HintPath>UnityDlls\LitJson.dll</HintPath>
     </Reference>
