@@ -59,13 +59,11 @@ F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.CoreModule.dll
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.UI.dll
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.UIModule.dll
-F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\ILRuntime.dll
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\Assembly-CSharp.pdb
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\ootii.pdb
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.CoreModule.pdb
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.UI.pdb
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\UnityEngine.UIModule.pdb
-F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\Dll_Project\Dll_Project\bin\Release\netstandard2.0\ILRuntime.pdb
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\ILRuntimeDemo\Assets\Resources\netstandard2.0\Dll_Project.deps.json
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\ILRuntimeDemo\Assets\Resources\netstandard2.0\Dll_Project.dll
 F:\UnityProject\ILRuntimeU3D_Clone2020.7.31\ILRuntimeDemo\Assets\Resources\netstandard2.0\Dll_Project.pdb

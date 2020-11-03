@@ -22,10 +22,16 @@
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\VR_Test2\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <HintPath>UnityDlls\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>UnityDlls\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="ootii">
       <HintPath>UnityDlls\ootii.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>UnityDlls\PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Cecil">
       <HintPath>UnityDlls\Unity.Cecil.dll</HintPath>
