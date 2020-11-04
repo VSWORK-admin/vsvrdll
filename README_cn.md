@@ -24,7 +24,7 @@ public static void Main()
 ```
 #### 2.2 交互逻辑代码编写
 ###### 2.2.1 创建脚本文件
-在```/Dll_Project/DllMain.cs```文件同目录下创建*.cs文件，文件命名于class命名相同，如工程示例中的```Click_show_hideDemo``` (**位置在 vsvrsdk 工程/Assets/Scenes/ILruntime_Example/Click_show_hide_Objs_Dll**)
+在```/Dll_Project/DllMain.cs```文件同目录下创建```*.cs```文件，文件命名于class命名相同，如工程示例中的```Click_show_hideDemo``` (**位置在 vsvrsdk 工程/Assets/Scenes/ILruntime_Example/Click_show_hide_Objs_Dll**)
 
 ###### 2.2.2 继承类
 代码中不能直接继承MonoBehaviour类必须继承DllGenerateBase包装类作为替代
