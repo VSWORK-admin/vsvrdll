@@ -16,3 +16,6 @@
 
 # Visual Studio cache directory
 .vs/
+
+/Dll_Project/bin
+/Dll_Project/obj

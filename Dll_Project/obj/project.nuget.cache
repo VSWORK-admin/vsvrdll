@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "99ENxDRgB5qolP/GJNGztBDTkVUJtmEQWo62ym3qc7emKl3TwC/ydqcbnZLugAyf+UK4yC9HYRItbFaH+bzOWQ==",
+  "dgSpecHash": "YOmPDImyzk/2J1rFQQvh1MI5DFyuMaI+FPLxUetVrFbdwGJBuFYuXGshohAjLhiOjaf9cVO7SdM61rCS3+G51A==",
   "success": true,
-  "projectFilePath": "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\Dll_Project.csproj",
+  "projectFilePath": "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\Dll_Project.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\W\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\W\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

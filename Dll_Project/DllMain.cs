@@ -8,14 +8,12 @@ namespace Dll_Project
         {
             UnityEngine.Debug.Log("Dll Run Main !");
 
-            var extralData = DllManager.Instance.transform.GetComponent<HFExtralData>();
+            var DllManagerObject = DllManager.Instance.transform.GetComponent<DllManager>();
 
-            if (extralData != null && extralData.ExtralDatas.Length > 0)
+            if (DllManagerObject != null && DllManagerObject.ExtralDatas.Length > 0)
             {
-                extralData.ExtralDatas[0].Target.gameObject.SetActive(true);
+                DllManagerObject.ExtralDatas[0].Target.gameObject.SetActive(true);
             }
-
-            //com.ootii.Messages.MessageDispatcher.SendMessage(DllManager.Instance, "STARTED", "Whoo Hoo!", 0);
-        }
+        } 
     }
 }

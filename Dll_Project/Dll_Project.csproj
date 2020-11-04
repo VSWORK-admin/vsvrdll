@@ -246,7 +246,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(ProjectDir)otherDir\$(ProjectName)dll.bytes&quot;&#xD;&#xA;copy &quot;$(TargetDir)$(ProjectName).pdb&quot; &quot;$(ProjectDir)otherDir\$(ProjectName)pdb.bytes&quot;" />
+    <Exec Command="copy &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;$(ProjectDir)unitybytes\$(ProjectName)dll.bytes&quot;&#xD;&#xA;copy &quot;$(TargetDir)$(ProjectName).pdb&quot; &quot;$(ProjectDir)unitybytes\$(ProjectName)pdb.bytes&quot;" />
   </Target>
 
 </Project>

@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\Dll_Project.csproj": {}
+    "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\Dll_Project.csproj": {}
   },
   "projects": {
-    "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\Dll_Project.csproj": {
+    "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\Dll_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\Dll_Project.csproj",
+        "projectUniqueName": "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\Dll_Project.csproj",
         "projectName": "Dll_Project",
-        "projectPath": "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\Dll_Project.csproj",
-        "packagesPath": "C:\\Users\\W\\.nuget\\packages\\",
-        "outputPath": "F:\\UnityProject\\ILRuntimeU3D_Clone2020.7.31\\Dll_Project\\Dll_Project\\obj\\",
+        "projectPath": "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\Dll_Project.csproj",
+        "packagesPath": "C:\\Users\\FEFE\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\202007\\VSVR\\VsvrDllMaker\\dll_project\\Dll_Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\W\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\FEFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
