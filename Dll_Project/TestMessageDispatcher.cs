@@ -95,6 +95,7 @@ public class TestMessageDispatcher : DllGenerateBase
         //g.Value = rinfo.g;
 
         ShowbStr = rinfo.b;
+        
         if(mStaticThings.I != null) { 
             WsChangeInfo wsinfo = new WsChangeInfo()
             {

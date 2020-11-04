@@ -12,7 +12,9 @@ namespace Dll_Project
 
             if (DllManagerObject != null && DllManagerObject.ExtralDatas.Length > 0)
             {
-                DllManagerObject.ExtralDatas[0].Target.gameObject.SetActive(true);
+                foreach (var item in DllManagerObject.ExtralDatas) {
+                    item.Target.gameObject.SetActive(true);
+                }
             }
         } 
     }
