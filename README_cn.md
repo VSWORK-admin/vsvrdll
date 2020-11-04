@@ -9,18 +9,22 @@
 #### 2.1 入口函数
 代码 从```Dll_Project.DllMain``` 类的 ```Main()``` 函数开始执行, 对应的c#文件为 ```/Dll_Project/DllMain.cs```，入口函数中将2.4.2中配置的脚本进行初始化操作（将脚本所在gameobject启用），如示例中操作：
 ```
-var DllManagerObject = DllManager.Instance.transform.GetComponent<DllManager>();
-
-if (DllManagerObject != null && DllManagerObject.ExtralDatas.Length > 0)
+public static void Main()
 {
-    foreach (var item in DllManagerObject.ExtralDatas) {
-        item.Target.gameObject.SetActive(true);
+    UnityEngine.Debug.Log("Dll Run Main !");
+
+    foreach (var obj in DllManager.Instance.ExtralDatas)
+    {
+        if (obj.Target != null)
+        {
+            obj.Target.gameObject.SetActive(true);
+        }
     }
 }
 ```
 #### 2.2 交互逻辑代码编写
 ###### 2.2.1 创建脚本文件
-在```/Dll_Project/DllMain.cs```文件同目录下创建*.cs文件，文件命名于class命名相同，如工程示例中的```TestMessageDispatcher```
+在```/Dll_Project/DllMain.cs```文件同目录下创建*.cs文件，文件命名于class命名相同，如工程示例中的```Click_show_hideDemo``` (**位置在 vsvrsdk 工程/Assets/Scenes/ILruntime_Example/Click_show_hide_Objs_Dll**)
 
 ###### 2.2.2 继承类
 代码中不能直接继承MonoBehaviour类必须继承DllGenerateBase包装类作为替代
@@ -35,10 +39,9 @@ copy "$(TargetDir)$(ProjectName).pdb" "$(ProjectDir)unitybytes\$(ProjectName)pdb
 
 或将 ```$(ProjectDir)unitybytes``` 改为 Unity工程目录中的场景所在路径 如：
 ```
-copy "$(TargetDir)$(ProjectName).dll" "D:\vsvrskd\Assets\Scenes\Example\$(ProjectName)dll.bytes"
-copy "$(TargetDir)$(ProjectName).pdb" "D:\vsvrskd\Assets\Scenes\Example\$(ProjectName)pdb.bytes"
+copy "$(TargetDir)$(ProjectName).dll" "D:\vsvrsdk\Assets\Scenes\ILruntime_Example\$(ProjectName)dll.bytes"
+copy "$(TargetDir)$(ProjectName).pdb" "D:\vsvrsdk\Assets\Scenes\ILruntime_Example\$(ProjectName)pdb.bytes"
 ```
-配置为 Unity工程目录中的场景所在路径 后生成的 字节码文件则自动会出现在 Unity场景所在路径内,若保持默认的  ```$(ProjectDir)unitybytes``` 则需要在生成后手动将 ```unitybytes``` 中的两个字节码文件拷贝到Unity工程内。
 
 ###### 2.3.1 生成字节码
 解决方案配置 设置为 ```Release``` 
@@ -46,12 +49,13 @@ copy "$(TargetDir)$(ProjectName).pdb" "D:\vsvrskd\Assets\Scenes\Example\$(Projec
 点击 生成->生成解决方案后 会自动创建 两个 ```.bytes``` 文件 分别为：
 ```Dll_Projectdll.bytes```  和 ```Dll_Projectpdb.bytes``` ,两个文件为unity场景所需要的交互逻辑字节码文件。
 
+生成后事件命令行配置为Unity工程目录中的场景所在路径 后生成的 字节码文件则自动会出现在 Unity场景所在路径内,若保持默认的  ```$(ProjectDir)unitybytes``` 则需要在生成后手动将 ```unitybytes``` 中的两个字节码文件拷贝到Unity工程内的场景所在目录。
 
 #### 2.4 Unity工程配置
 ###### 2.4.1 配置加载字节码
 将```DllManager.cs```组件拖入SDK场景任意物体中(**一个场景中只能存在一个```DllManager.cs```组件**),然后将```Dll_Projectdll.bytes```,```Dll_Projectpdb.bytes```分别拖入```DllAsset```,```PdbAsset```中
 ###### 2.4.2 配置交互脚本
-将```GeneralDllBehavior```组件托入SDK场景任意物体中,```ScriptClassName```中填写包装类名(如果有命名空间,填写时也必须包含命名空间名称如```Dll_Project.TestMessageDispatcher```,如果不包含命名空间则直接填写类名，如```TestMessageDispatcher```),这个类就可以像平时写unity的MonoBehaviour类一样了。
+将```GeneralDllBehavior```组件托入SDK场景任意物体中,```ScriptClassName```中填写包装类名(如果有命名空间,填写时也必须包含命名空间名称如```Dll_Project.TestSetLeftHand```,如果不包含命名空间则直接填写类名，如```Click_show_hideDemo```),这个类就可以像平时写unity的MonoBehaviour类一样了。
 
 将```GeneralDllBehavior```组件所在物体拖入2.4.1 中创建的 ```DllManager``` 所在 Inspector 中的 ExtralDatas 中，如果有多个```GeneralDllBehavior```，则在DllManager中设置多个 ExtralDatas，并依次拖入。
 ###### 2.4.3 配置交互脚本初始化
@@ -60,19 +64,57 @@ copy "$(TargetDir)$(ProjectName).pdb" "D:\vsvrskd\Assets\Scenes\Example\$(Projec
 #### 2.5 基本使用
 ###### 2.5.1 脚本内获取场景物体
 使用 ExtralData 类,它在其他脚本中也存在,主要是用来方便获取一些场景中物体的引用而不需要写一些Find代码
-如在```TestMessageDispatcher```中需要操作设置某个物体可见则 可以将物体拖入```TestMessageDispatcher```所在的```GeneralDllBehavior```组件中的 ExtralDatas 中 并使用```BaseMono.ExtralDatas``` 来获取到 ```ExtralData[]``` 如代码中所示：
+如在```Click_show_hideDemo```中需要操作设置某个物体可见则 可以将物体拖入```Click_show_hideDemo```所在的```GeneralDllBehavior```组件中的 ExtralDatas 中 并使用```BaseMono.ExtralDatas``` 来获取到 ```ExtralData[]``` 如代码中所示：
 ```
-public override void OnEnable()
+public List<GameObject> ClickObjs = new List<GameObject>();
+public List<GameObject> ShowObjs = new List<GameObject>();
+
+public override void Awake()
 {
-    base.OnEnable();
-    if (BaseMono.ExtralDatas != null && BaseMono.ExtralDatas.Length > 0)
+    base.Awake();
+
+    ClickObjs.Clear();
+    ShowObjs.Clear();
+
+    foreach (var obj in BaseMono.ExtralDatas)
     {
-        BaseMono.ExtralDatas[0].Target.gameObject.SetActive(true);
+        if (obj.Target != null)
+        {
+            if (obj.OtherData.Equals("0"))
+            {
+                ClickObjs.Add(obj.Target.gameObject);
+            }
+            else if (obj.OtherData.Equals("1"))
+            {
+                ShowObjs.Add(obj.Target.gameObject);
+            }
+        }
     }
 }
 ```
-###### 2.5.2 发送接收VR指令消息
+###### 2.5.2 发送和接收VR指令消息
 加入引用 ```using com.ootii.Messages;```
+
+
+发送VR指令信息：使用 ```MessageDispatcher.SendMessage``` 发送 类型为 ```WsMessageType.SendCChangeObj``` 字符串的信息
+消息体为 ```WsCChangeInfo```类
+
+```
+WsCChangeInfo wsinfo1 = new WsCChangeInfo()
+{
+    a = "showitem",
+    b = showItemName,
+    c = string.Empty,
+    d = string.Empty,
+    e = string.Empty,
+    f = string.Empty,
+    g = string.Empty,
+};
+
+MessageDispatcher.SendMessage(this, WsMessageType.SendCChangeObj.ToString(), wsinfo1, 0);
+```
+
+
 
 创建接收信息方法
 ```
@@ -84,7 +126,8 @@ void RecieveCChangeObj(IMessage msg)
 }
 ```
 
-绑定事件：
+
+绑定和解绑接收信息事件：
 ```
 public override void OnEnable()
 {
@@ -98,3 +141,75 @@ public override void OnDisable()
     MessageDispatcher.RemoveListener(WsMessageType.RecieveCChangeObj.ToString(), RecieveCChangeObj);
 }
 ```
+###### 2.5.3 获取常用的物体
+```mStaticThings```类中有VR中常用的物体可以直接用```mStaticThins.I.xxx```单例获取
+
+比如在 ```Dll_Project.TestSetLeftHand```范例中，将一个球在Update中设置到左手手柄位置一直跟随：
+```
+public override void Update()
+{
+    base.Update();
+    if (mStaticThings.I != null) {
+        BaseMono.ExtralDatas[0].Target.gameObject.transform.position = mStaticThings.I.LeftHand.position;
+    }
+}
+```
+
+###### 2.5.4 获取手柄点击的物体
+监听 string 为 “VRPointClick” 的事件，事件返回的是 GameObject
+
+```
+public override void OnEnable()
+{
+    base.OnEnable();
+
+    MessageDispatcher.AddListener(VRPointObjEventType.VRPointClick.ToString(), GetPointEventType);
+}
+
+public override void OnDisable()
+{
+    base.OnDisable();
+
+    MessageDispatcher.RemoveListener(VRPointObjEventType.VRPointClick.ToString(), GetPointEventType);
+}
+
+void GetPointEventType(IMessage msg)
+{
+    GameObject pobj = msg.Data as GameObject;
+    ClickedObj = pobj;
+
+    HandleGetPointedObj();
+}
+```
+
+###### 2.5.5 获取手柄按键事件
+监听 ```enum CommonVREventType.xxxx.ToString()```  的事件
+
+```
+public override void OnEnable()
+{
+    base.OnEnable();
+
+    MessageDispatcher.AddListener(CommonVREventType.VRRaw_RightTrigger.ToString(), GetVRInput);
+}
+
+public override void OnDisable()
+{
+    base.OnDisable();
+
+    MessageDispatcher.RemoveListener(CommonVREventType.VRRaw_RightTrigger.ToString(), GetVRInput);
+}
+
+Vector2 Rcieved2DAxis;
+Float Rcieved1DAxis;
+
+void GetVRInput(IMessage msg)
+{
+    if(msg.Type == CommonVREventType.VR_LefStickAxis.ToString() || msg.Type == CommonVREventType.VR_RightStickAxis.ToString()){
+        Rcieved2DAxis.Value = (Vector2)msg.Data;
+    }else if(msg.Type == CommonVREventType.VR_LeftTriggerAxis.ToString() || msg.Type == CommonVREventType.VR_RightTriggerAxis.ToString() || msg.Type == CommonVREventType.VR_LeftGrabAxis.ToString() || msg.Type == CommonVREventType.VR_RightGrabAxis.ToString()){
+        Rcieved1DAxis.Value = (float)msg.Data;
+    }
+}
+```
+###### 2.5.6 其他事件和设置可以参考  vsvrsdk 工程内的  ```Assets/_VSVRSDK/VRActions``` 中的 playmaker 实现的案例模仿书写C#交互，VRActions功能在 vsvrsdk 工程的 README中有详细介绍

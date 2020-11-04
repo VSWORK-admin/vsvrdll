@@ -9,6 +9,9 @@ public class Click_show_hideDemo : DllGenerateBase
 {
     public VRPointObjEventType PointEventType = VRPointObjEventType.VRPointClick;
 
+    public List<GameObject> ClickObjs = new List<GameObject>();
+    public List<GameObject> ShowObjs = new List<GameObject>();
+
     public GameObject ClickedObj;
     public GameObject showItem;
     public GameObject Recieve_ShowItem;
@@ -20,6 +23,31 @@ public class Click_show_hideDemo : DllGenerateBase
 
     public string Recieve_A = string.Empty;
     public string Recieve_B = string.Empty;
+
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        ClickObjs.Clear();
+        ShowObjs.Clear();
+
+        foreach (var obj in BaseMono.ExtralDatas)
+        {
+            if (obj.Target != null)
+            {
+                if (obj.OtherData.Equals("0"))
+                {
+                    ClickObjs.Add(obj.Target.gameObject);
+                }
+                else if (obj.OtherData.Equals("1"))
+                {
+                    ShowObjs.Add(obj.Target.gameObject);
+                }
+            }
+        }
+    }
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -64,39 +92,24 @@ public class Click_show_hideDemo : DllGenerateBase
 
         if (ClickedObj == null || ClickedObj.Equals(null))
         {
-            _id = Dll_Project.DllMain.ClickObjs.FindIndex(x => x == null || x.Equals(null));
+            _id = ClickObjs.FindIndex(x => x == null || x.Equals(null));
         }
         else
         {
-            _id = Dll_Project.DllMain.ClickObjs.IndexOf(ClickedObj);
+            _id = ClickObjs.IndexOf(ClickedObj);
         }
 
         var _iscontained = _id != -1;
 
         if (!_iscontained) return;
 
-        if (_id >= Dll_Project.DllMain.ShowObjs.Count) return;
+        if (_id >= ShowObjs.Count) return;
 
-        showItem = Dll_Project.DllMain.ShowObjs[_id];
+        showItem = ShowObjs[_id];
 
         showItemName = showItem.name;
 
         if (showItem.gameObject.activeInHierarchy)
-        {
-            WsCChangeInfo wsinfo1 = new WsCChangeInfo()
-            {
-                a = "showitem",
-                b = showItemName,
-                c = string.Empty,
-                d = string.Empty,
-                e = string.Empty,
-                f = string.Empty,
-                g = string.Empty,
-            };
-
-            MessageDispatcher.SendMessage(this, WsMessageType.SendCChangeObj.ToString(), wsinfo1, 0);
-        }
-        else
         {
             WsCChangeInfo wsinfo1 = new WsCChangeInfo()
             {
@@ -111,7 +124,21 @@ public class Click_show_hideDemo : DllGenerateBase
 
             MessageDispatcher.SendMessage(this, WsMessageType.SendCChangeObj.ToString(), wsinfo1, 0);
         }
+        else
+        {
+            WsCChangeInfo wsinfo1 = new WsCChangeInfo()
+            {
+                a = "showitem",
+                b = showItemName,
+                c = string.Empty,
+                d = string.Empty,
+                e = string.Empty,
+                f = string.Empty,
+                g = string.Empty,
+            };
 
+            MessageDispatcher.SendMessage(this, WsMessageType.SendCChangeObj.ToString(), wsinfo1, 0);
+        }
     }
 
 
@@ -129,10 +156,10 @@ public class Click_show_hideDemo : DllGenerateBase
 
         HandleCChangeObj();
     }
-    
+
     void HandleCChangeObj()
     {
-        foreach (var obj in Dll_Project.DllMain.ShowObjs)
+        foreach (var obj in ShowObjs)
         {
             if (obj != null && obj.name.Equals(Recieve_B))
             {

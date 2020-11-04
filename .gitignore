@@ -19,3 +19,5 @@
 
 Dll_Project/bin
 Dll_Project/obj
+/Dll_Project/bin/*
+/Dll_Project/obj/*
