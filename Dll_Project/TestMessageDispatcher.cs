@@ -23,7 +23,6 @@ public class TestMessageDispatcher : DllGenerateBase
     {
         base.Start();
 
-
         if (mStaticThings.I != null && mStaticThings.I.LeftHand != null)
         {
             Debug.Log(mStaticThings.I.LeftHand.position.ToString());
@@ -39,6 +38,14 @@ public class TestMessageDispatcher : DllGenerateBase
         MessageDispatcher.AddListener(WsMessageType.RecieveCChangeObj.ToString(), RecieveCChangeObj);
 
         Debug.Log("HoffixTestMono OnEnable !");
+
+        //var extralData = DllManager.Instance.transform.GetDllComponent<TestMessageDispatcher>().BaseMono.ExtralDatas;
+        //Debug.LogWarning(BaseMono.ExtralDatas);
+
+        if (BaseMono.ExtralDatas != null && BaseMono.ExtralDatas.Length > 0)
+        {
+            BaseMono.ExtralDatas[0].Target.gameObject.SetActive(true);
+        }
     }
 
     public override void OnDisable()
@@ -88,6 +95,18 @@ public class TestMessageDispatcher : DllGenerateBase
         //g.Value = rinfo.g;
 
         ShowbStr = rinfo.b;
+        
+        if(mStaticThings.I != null) { 
+            WsChangeInfo wsinfo = new WsChangeInfo()
+            {
+                id = mStaticThings.I.mAvatarID,
+                name = "InfoLog",
+                a = "ssssssssssssssss",
+                b =  InfoColor.green.ToString(),
+                c = (1f).ToString()
+            };
+            MessageDispatcher.SendMessage(this, VrDispMessageType.SendInfolog.ToString(), wsinfo, 0);
+        }
     }
 
     public override void OnGUI()
