@@ -36,6 +36,9 @@
     <Reference Include="DOTweenPro">
       <HintPath>UnityDlls\DOTweenPro.dll</HintPath>
     </Reference>
+    <Reference Include="InputTouches">
+      <HintPath>UnityDlls\InputTouches.dll</HintPath>
+    </Reference>
     <Reference Include="LitJson">
       <HintPath>UnityDlls\LitJson.dll</HintPath>
     </Reference>
@@ -44,6 +47,9 @@
     </Reference>
     <Reference Include="PlayMaker">
       <HintPath>UnityDlls\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="Siccity.GLTFUtility">
+      <HintPath>UnityDlls\Siccity.GLTFUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Cecil">
       <HintPath>UnityDlls\Unity.Cecil.dll</HintPath>
