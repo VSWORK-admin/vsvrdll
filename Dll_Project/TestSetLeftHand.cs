@@ -23,6 +23,7 @@ namespace Dll_Project {
         {
             base.Start();
             Debug.Log("TestMessageDispatcher Start !");
+            Debug.LogWarning(mStaticThings.I.LeftHand);
         }
 
         public override void OnEnable()
@@ -45,5 +46,11 @@ namespace Dll_Project {
                 BaseMono.ExtralDatas[0].Target.gameObject.transform.position = mStaticThings.I.LeftHand.position;
             }
         }
+        public override void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+            Debug.LogWarning(other);
+        }
+
     }
 }
